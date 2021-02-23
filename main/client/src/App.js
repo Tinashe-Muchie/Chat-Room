@@ -1,22 +1,23 @@
-import React, {useState, useEffect}from 'react';
+import React from 'react';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import './App.css';
-import Signup from './Components/Login/Signup'
+//import Signup from './Components/Login/Signup';
+import ChatArea from './Components/Chat-Area/ChatArea'
 
 function App() {
 
-  const [apiResponse, setApiResponse] = useState("");
-  function callAPI(){
-      fetch("http://localhost:9000/testAPI")
-          .then(res => res.text())
-          .then(res => setApiResponse(res));
-  }
-
   return (
     <div className="App">
-      <button onClick={()=>{callAPI()}}>hello</button>
-      <p>{apiResponse}</p>
-      <p>hello world</p>
-      <Signup />
+      <Router>
+        <>
+        <ChatArea />
+        <Switch>
+          <Route>
+
+          </Route>
+        </Switch>
+        </>
+      </Router> 
     </div>
   );
 }
