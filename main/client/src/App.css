@@ -125,25 +125,26 @@
   font-family: 'FontAwesome';
 }
 
-.border {
-  border:thick 
+.sidebar-wrapper {
+  border: medium solid #86C232;
 }
 
-.ul-list {
-  list-style-type: none;
-  overflow: auto;
-  flex-grow: 1;
-  padding: auto;
-  border: solid;
-  border-color: green;
-  height: ;
+.tab-content {
+  color: #C5C6C7;
+  background-color: #86c232be;
+  border: thin solid #86C232;
 }
 
-.ul-list >li {
-  padding: 0.5rem, 1rem;
+.id-tab {
+  color: #C5C6C7;
+  background-color: #86c23273;
+  border: thin solid #86C232;
 }
 
-.ul-list > li:nth-child(odd) {
-  background-color: #86c2326b;
+.modal-wrapper {
+  background-color: #222629 !important;
+  border: thin solid #86C232 !important;
+  border-radius: 5px;
+  color: #C5C6C7 !important; 
 }
 
