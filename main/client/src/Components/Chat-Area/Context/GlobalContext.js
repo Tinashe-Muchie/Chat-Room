@@ -19,11 +19,21 @@ function GlobalContext({children}) {
         dispatch({
             type: 'contact',
             value: {
-                ID: idRef,
+                id: idRef,
                 username: nameRef,
             }
         })
     }
+    const createChat = (recipientId, recipientUsername)=> {
+        dispatch({
+            type: 'chat',
+            value: {
+                id: recipientId,
+                username: recipientUsername,
+            },
+        })
+    }
+
 
     useEffect(()=>{
         localStorage.setItem('contacts', JSON.stringify(state.contacts))
@@ -32,9 +42,12 @@ function GlobalContext({children}) {
 
     return (
         <div>
-            <Context.Provider value = {
-                createContact
-            }>
+            <Context.Provider value={{
+                createContact,
+                Contacts: state.contacts,
+                createChat,
+                Chats: state.chats,
+            }}>
                 {children}
             </Context.Provider>
         </div>

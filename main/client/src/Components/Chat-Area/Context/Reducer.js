@@ -5,6 +5,11 @@ function Reducer(state, action) {
                 ...state,
                 contacts: [...state.contacts, action.value]
             }
+        case 'chat':
+            return {
+                ...state,
+                chats: [...state.chats, action.value]
+            }
         default:
             return state
     }
