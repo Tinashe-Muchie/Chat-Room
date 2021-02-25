@@ -148,3 +148,12 @@
   color: #C5C6C7 !important; 
 }
 
+.list-item-wrapper {
+  background-color: #222629c7 !important;
+  color: #C5C6C7 !important;
+}
+
+.list-item-wrapper:hover {
+  background-color:#222629 !important;
+}
+
