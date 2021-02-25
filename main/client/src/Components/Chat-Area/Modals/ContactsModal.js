@@ -10,7 +10,6 @@ function ContactsModal({handleClose}) {
 
     function handleSubmit(e){
         e.preventDefault()
-
         createContact(idRef.current.value, nameRef.current.value)
         handleClose()
     }
@@ -29,11 +28,10 @@ function ContactsModal({handleClose}) {
                         <Form.Control type="text" placeholder="Enter Username" ref={nameRef} required/>
                     </Form.Group>
                     <Button type="submit" variant="outline-primary" className="mb-3 float-right">
-                        Save
+                        Create
                     </Button>
                 </Form>
-            </Modal.Body>
-                
+            </Modal.Body>        
         </div>
     )
 }
