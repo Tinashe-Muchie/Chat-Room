@@ -5,10 +5,10 @@ import SideBar from './SideBar'
 function ChatArea() {
     return (
         <div>
-            <Helmet>
+           <Helmet>
                 <style>{'body {background-color: #222629}'}</style>
-            </Helmet>
-            <div className="d-flex container border" style= {{height: '100vh' }}>
+           </Helmet>
+            <div className="d-flex container" style= {{height: '100vh' }}>
                 <SideBar />
             </div>
         </div>
