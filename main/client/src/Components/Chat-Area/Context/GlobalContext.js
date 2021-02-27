@@ -1,4 +1,4 @@
-import React, {createContext, useReducer, useEffect} from 'react'
+import React, {createContext, useReducer, useEffect, useState} from 'react'
 import Reducer from './Reducer'
 
 export const Context = createContext()
@@ -6,8 +6,8 @@ const initialState = {
     contacts: localStorage.getItem('contacts')
             ? JSON.parse(localStorage.getItem('contacts'))
             : [],
-    chats: localStorage.getItem('chats')
-            ? JSON.parse(localStorage.getItem('chats'))
+    Chats: localStorage.getItem('Chats')
+            ? JSON.parse(localStorage.getItem('Chats'))
             : [],
 }
 
@@ -24,30 +24,28 @@ function GlobalContext({children}) {
             }
         })
     }
-    const createChat = (recipientId, recipientUsername)=> {
+    const createChats = (chat)=> {
         dispatch({
-            type: 'chat',
-            value: {
-                id: recipientId,
-                username: recipientUsername,
-            },
+            type: 'Chats',
+            value: chat,
         })
     }
 
 
     useEffect(()=>{
         localStorage.setItem('contacts', JSON.stringify(state.contacts))
-        localStorage.setItem('chats', JSON.stringify(state.chats))
+        localStorage.setItem('Chats', JSON.stringify(state.Chats))
     }, [state])
 
+    const value = {
+        createContact,
+        Contacts: state.contacts,
+        createChats,
+        Chats:state.Chats
+    }
     return (
         <div>
-            <Context.Provider value={{
-                createContact,
-                Contacts: state.contacts,
-                createChat,
-                Chats: state.chats,
-            }}>
+            <Context.Provider value={value}>
                 {children}
             </Context.Provider>
         </div>
