@@ -9,15 +9,14 @@ function Chats() {
     return (
         <div>
              <ListGroup variant="flush">
-                {Chats.map((chat)=>(
+                {Chats.map((chat, index)=>(
                     <ListGroup.Item 
-                        key={0} 
+                        key={index} 
                         action
-                        active
-                        onClick
+                        active={chat.selected}
                         className="list-item-wrapper text-left"
                     >
-                            {chat.username.join(',')}
+                            {[chat.map(cha=>(cha.username)).join(',')]}
                     </ListGroup.Item>
                 ))}
             </ListGroup>
