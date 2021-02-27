@@ -1,6 +1,7 @@
 import React from 'react'
 import {Helmet} from 'react-helmet'
 import SideBar from './SideBar'
+import MainBar from './MainBar'
 
 function ChatArea() {
     return (
@@ -10,6 +11,7 @@ function ChatArea() {
            </Helmet>
             <div className="d-flex container" style= {{height: '100vh' }}>
                 <SideBar />
+                <MainBar />
             </div>
         </div>
     )
