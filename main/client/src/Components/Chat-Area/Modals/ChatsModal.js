@@ -4,13 +4,12 @@ import {Context} from '../Context/GlobalContext'
 
 function ChatsModal({handleClose}) {
 
-    const {Contacts, createChat} = useContext(Context)
-    const [selectedId, setSelectedId] = useState([]) 
-    const [selectedUsername, setSelectedUsername] = useState([]) 
+    const {Contacts, createChats} = useContext(Context)
+    const [selectedId, setSelectedId] = useState([])  
 
     function handleSubmit(e){
         e.preventDefault()
-        createChat(selectedId, selectedUsername)
+        createChats(Chats)
         handleClose()
     }
     function handleChangeContact(id){
@@ -24,17 +23,14 @@ function ChatsModal({handleClose}) {
             }
         })
     }
-    function handleChangeUsername(username){
-        setSelectedUsername((prevSelectedUsername)=>{
-            if(prevSelectedUsername.includes(username)){
-                return selectedId.filter((prevUsername)=>{
-                    return prevUsername !== username
-                })
-            } else {
-                return [...prevSelectedUsername, username]
-            }
+    
+    const Chats =  selectedId.map((selected)=>{
+        const contact = Contacts.find(({id})=>{
+            return selected === id
         })
-    }
+        const name = (contact && contact.username) || selected
+        return {id: selected, username: name}
+    })
     
     return (
         <div className="modal-wrapper">
@@ -51,7 +47,6 @@ function ChatsModal({handleClose}) {
                                 value={selectedId}
                                 onChange={()=>{
                                     handleChangeContact(contact.id)
-                                    handleChangeUsername(contact.username)
                                 }}
                             />
                         </Form.Group>
