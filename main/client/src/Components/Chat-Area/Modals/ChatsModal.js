@@ -14,13 +14,13 @@ function ChatsModal({handleClose}) {
     }
     function handleChangeContact(id){
         setSelectedId((prevSelectedId)=>{
-            if(prevSelectedId.includes(id)){
-                return selectedId.filter((prevId)=>{
-                    return prevId !== id
-                })
-            } else {
+            //if(prevSelectedId.includes(id)){
+              //  return selectedId.filter((prevId)=>{
+                //    return prevId !== id
+                //})
+            //} else {
                 return [...prevSelectedId, id]
-            }
+            //}
         })
     }
     
