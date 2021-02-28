@@ -25,7 +25,7 @@ function MainBar() {
                             required
                             value={text}
                             onChange={(e)=>setText(e.target.value)}
-                            style={{height:'11vh',resize:'none'}}
+                            style={{height:'10vh',resize:'none'}}
                         />
                         <InputGroup.Append>
                             <Button type="submit">Send</Button>
