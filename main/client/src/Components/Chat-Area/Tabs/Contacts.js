@@ -9,15 +9,16 @@ function Contacts() {
     return (
         <div>
             <ListGroup variant="flush">
-                {Contacts.map((contact)=>(
+                {Contacts.map((contact)=>{
+                    return (
                     <ListGroup.Item 
                         key={contact.id} 
-                        action
                         className="list-item-wrapper text-left"
                     >
-                            {contact.username}
+                        {contact.username}
                     </ListGroup.Item>
-                ))}
+                )})
+            }
             </ListGroup>
         </div>
     )
