@@ -4,7 +4,7 @@ import {Context} from '../Context/GlobalContext'
 
 function Chats() {
 
-    const {Chats} = useContext(Context)
+    const {Chats, selected, selectChatIndex} = useContext(Context)
 
     return (
         <div>
@@ -13,10 +13,11 @@ function Chats() {
                     <ListGroup.Item 
                         key={index} 
                         action
-                        active={chat.selected}
-                        className="list-item-wrapper text-left"
+                        onClick={()=>selectChatIndex(index)}
+                        active={selected}
+                        className=" text-left"
                     >
-                            {[chat.map(cha=>(cha.username)).join(',')]}
+                            {chat.map(cha=>(cha.username)).join(', ')}
                     </ListGroup.Item>
                 ))}
             </ListGroup>
