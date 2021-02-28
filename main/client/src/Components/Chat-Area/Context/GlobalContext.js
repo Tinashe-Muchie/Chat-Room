@@ -14,6 +14,7 @@ const initialState = {
 function GlobalContext({children}) {
 
     const [state, dispatch] = useReducer(Reducer, initialState)
+    const [selectedChatIndex, setSelectedChatIndex] = useState(0)
 
     const createContact = (idRef, nameRef)=> {
         dispatch({
@@ -31,6 +32,10 @@ function GlobalContext({children}) {
         })
     }
 
+    const selected = state.Chats.map((chat, index)=>{
+        return selectedChatIndex === chat.map((cha)=>(cha.index))
+    })
+
 
     useEffect(()=>{
         localStorage.setItem('contacts', JSON.stringify(state.contacts))
@@ -41,7 +46,9 @@ function GlobalContext({children}) {
         createContact,
         Contacts: state.contacts,
         createChats,
-        Chats:state.Chats
+        Chats:state.Chats,
+        selected,
+        selectChatIndex: setSelectedChatIndex
     }
     return (
         <div>
