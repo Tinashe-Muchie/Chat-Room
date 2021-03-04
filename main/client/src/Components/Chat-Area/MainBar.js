@@ -7,6 +7,8 @@ function MainBar() {
 
     function handleSubmit(e){
         e.preventDefault()
+
+        setText('')
     }
 
     return (
