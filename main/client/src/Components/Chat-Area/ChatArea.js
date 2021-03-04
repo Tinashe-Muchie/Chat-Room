@@ -1,9 +1,12 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {Helmet} from 'react-helmet'
 import SideBar from './SideBar'
 import MainBar from './MainBar'
+import { Context } from './Context/GlobalContext'
 
 function ChatArea() {
+    const {selectChatIndex} = useContext(Context)
+     
     return (
         <div>
            <Helmet>
@@ -11,7 +14,7 @@ function ChatArea() {
            </Helmet>
             <div className="d-flex container" style= {{height: '100vh' }}>
                 <SideBar />
-                <MainBar />
+                {selectChatIndex && <MainBar />}
             </div>
         </div>
     )
