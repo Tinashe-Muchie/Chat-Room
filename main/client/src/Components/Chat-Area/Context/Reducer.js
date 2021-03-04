@@ -10,6 +10,11 @@ function Reducer(state, action) {
                 ...state,
                 Chats: [...state.Chats, action.value]
             }
+            case 'chats':
+                return {
+                    ...state,
+                    chats: [...state.chats, action.value]
+                }
         default:
             return state
     }

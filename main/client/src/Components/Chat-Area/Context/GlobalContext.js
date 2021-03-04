@@ -1,4 +1,4 @@
-import React, {createContext, useReducer, useEffect, useState} from 'react'
+import React, {createContext, useReducer, useEffect, useCallback, useState} from 'react'
 import Reducer from './Reducer'
 
 export const Context = createContext()
@@ -8,6 +8,9 @@ const initialState = {
             : [],
     Chats: localStorage.getItem('Chats')
             ? JSON.parse(localStorage.getItem('Chats'))
+            : [],
+    chats: localStorage.getItem('chats')
+            ? JSON.parse(localStorage.getItem('chats'))
             : [],
 }
 
@@ -31,25 +34,44 @@ function GlobalContext({children}) {
             value: chat,
         })
     }
-
-    const selected = state.Chats.map((chat, index)=>{
-        return selectedChatIndex === chat.map((cha)=>(cha.index))
-    })
-
+    
+    const createChat = useCallback(
+        (chat)=> {
+            dispatch({
+                type: 'chats',
+                value: chat,
+            })
+        }, []
+    )
+    
+    useEffect(()=>{
+        const chat_s = state.Chats.map((chats, index)=>{
+            const selected = index === selectedChatIndex
+            return {chat: chats, index: index, selected}
+        })
+        createChat(chat_s)
+    }, [state.Chats, createChat,selectedChatIndex])
+     
 
     useEffect(()=>{
         localStorage.setItem('contacts', JSON.stringify(state.contacts))
         localStorage.setItem('Chats', JSON.stringify(state.Chats))
+        localStorage.setItem('chats', JSON.stringify(state.chats))
     }, [state])
+
+   
+    
 
     const value = {
         createContact,
         Contacts: state.contacts,
         createChats,
-        Chats:state.Chats,
-        selected,
-        selectChatIndex: setSelectedChatIndex
+        Chats: state.Chats,
+        selectChatIndex: setSelectedChatIndex,
+        chats: state.chats,
+        selectChatIndex: state.Chats[selectedChatIndex],
     }
+
     return (
         <div>
             <Context.Provider value={value}>
