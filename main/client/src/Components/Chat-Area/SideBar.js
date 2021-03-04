@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Tab, Nav, Button, Modal, Navbar} from 'react-bootstrap'
+import {Tab, Nav, Button, Modal} from 'react-bootstrap'
 import Chats from './Tabs/Chats'
 import Contacts from './Tabs/Contacts'
 import ContactsModal from './Modals/ContactsModal'
