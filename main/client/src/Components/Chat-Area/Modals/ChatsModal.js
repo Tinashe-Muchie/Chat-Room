@@ -5,31 +5,32 @@ import {Context} from '../Context/GlobalContext'
 function ChatsModal({handleClose}) {
 
     const {Contacts, createChats} = useContext(Context)
-    const [selectedId, setSelectedId] = useState([])  
+    const [selectedId, setSelectedId] = useState([]) 
 
     function handleSubmit(e){
         e.preventDefault()
-        createChats(Chats)
+        createChats(Chats_s)
         handleClose()
     }
+
     function handleChangeContact(id){
-        setSelectedId((prevSelectedId)=>{
-            //if(prevSelectedId.includes(id)){
-              //  return selectedId.filter((prevId)=>{
-                //    return prevId !== id
-                //})
-            //} else {
-                return [...prevSelectedId, id]
-            //}
-        })
-    }
-    
-    const Chats =  selectedId.map((selected)=>{
+            setSelectedId((prevSelectedId)=>{
+                if(prevSelectedId.includes(id)){
+                    return prevSelectedId.filter((prevId)=>{
+                       return prevId !== id
+                    })
+                } else {
+                    return [...prevSelectedId, id]
+                }
+            })
+        }
+        
+    const Chats_s = selectedId.map((selected, index)=>{
         const contact = Contacts.find(({id})=>{
             return selected === id
         })
         const name = (contact && contact.username) || selected
-        return {id: selected, username: name}
+        return {id: selected, username: name} 
     })
     
     return (
@@ -40,18 +41,17 @@ function ChatsModal({handleClose}) {
             <Modal.Body>
                 <Form onSubmit={handleSubmit}>
                     {Contacts.map((contact)=>(
-                        <Form.Group controlledId={contact.id} key={contact.id}>
+                        <Form.Group key={contact.id}>
                             <Form.Check
                                 type="checkbox"
                                 label={contact.username}
-                                value={selectedId}
+                                value={selectedId.includes(contact.id)}
                                 onChange={()=>{
                                     handleChangeContact(contact.id)
                                 }}
                             />
                         </Form.Group>
                     ))}
-                    
                     <Button type="submit" variant="outline-primary" className="mb-3 float-right">
                         Create
                     </Button>
@@ -61,4 +61,4 @@ function ChatsModal({handleClose}) {
     )
 }
 
-export default ChatsModal
+export default React.memo(ChatsModal)
