@@ -1,8 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState, useContext} from 'react'
 import { Form, InputGroup, Button} from 'react-bootstrap'
+import { Context } from './Context/GlobalContext'
 
 function MainBar() {
 
+    const {createMessage, selectedChatIndex} = useContext(Context)
     const [text, setText] = useState('')
 
     function handleSubmit(e){
@@ -10,6 +12,12 @@ function MainBar() {
 
         setText('')
     }
+
+    const message = selectedChatIndex.map((chat)=>{
+        const contactId = chat.Chat.map(cha=>cha.id)
+        return {id: contactId, message: text}
+    })
+    console.log(message)
 
     return (
         <div className="d-flex flex-column flex-grow-1 ml-1">
