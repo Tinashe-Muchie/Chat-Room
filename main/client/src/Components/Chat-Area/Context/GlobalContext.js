@@ -12,6 +12,9 @@ const initialState = {
     chats: localStorage.getItem('chats')
             ? JSON.parse(localStorage.getItem('chats'))
             : [],
+    message: localStorage.getItem('message')
+            ? JSON.parse(localStorage.getItem('message'))
+            : [],
 }
 
 function GlobalContext({children}) {
@@ -28,6 +31,7 @@ function GlobalContext({children}) {
             }
         })
     }
+
     const createChats = (chat)=> {
         dispatch({
             type: 'Chats',
@@ -47,29 +51,33 @@ function GlobalContext({children}) {
     useEffect(()=>{
         const chat_s = state.Chats.map((chats, index)=>{
             const selected = index === selectedChatIndex
-            return {chat: chats, index: index, selected}
+            return {Chat: chats, index: index, selected}
         })
         createChat(chat_s)
     }, [state.Chats, createChat,selectedChatIndex])
-     
+
+    const createMessage = (message)=>{
+        dispatch({
+            type: 'message',
+            value: message,
+        })
+    }
 
     useEffect(()=>{
         localStorage.setItem('contacts', JSON.stringify(state.contacts))
         localStorage.setItem('Chats', JSON.stringify(state.Chats))
         localStorage.setItem('chats', JSON.stringify(state.chats))
+        localStorage.setItem('message', JSON.stringify(state.message))
     }, [state])
-
-   
-    
 
     const value = {
         createContact,
         Contacts: state.contacts,
         createChats,
-        Chats: state.Chats,
         selectChatIndex: setSelectedChatIndex,
+        selectedChatIndex: state.chats[selectedChatIndex],
         chats: state.chats,
-        selectChatIndex: state.Chats[selectedChatIndex],
+        createMessage,
     }
 
     return (
