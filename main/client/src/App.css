@@ -161,12 +161,14 @@
   color: #C5C6C7 !important; 
 }
 
-.list-item-wrapper {
+.list-group-item {
   background-color: #222629c7 !important;
   color: #C5C6C7 !important;
 }
 
-.list-item-wrapper:hover {
-  background-color:#222629 !important;
+.list-group-item.active {
+  background-color: #222629 !important;
+  border-top: thin solid #66FCF1 !important;
+  border-bottom: thin solid #66FCF1 !important;
 }
 
