@@ -4,21 +4,20 @@ import {Context} from '../Context/GlobalContext'
 
 function Chats() {
 
-    const {Chats, selectChatIndex,chats} = useContext(Context)
-    //const chats_s = [...chats].pop()
-    //const cha = chats_s.map((ch)=>ch.selected)
-    //console.log(cha)
+    const {selectChatIndex,chats} = useContext(Context)
+    const Chats = [...chats].pop()
     return (
         <div>
              <ListGroup variant="flush">
-                {Chats.map((chat, index)=>(
+                {Chats && Chats.map((chat, index)=>(
                     <ListGroup.Item 
                         key={index} 
                         action
                         onClick={()=>selectChatIndex(index)}
-                        className="list-item-wrapper text-left"
+                        active={chat.selected}
+                        className="text-left"
                     >
-                            {chat.map(cha=>(cha.username)).join(', ')}
+                        {chat.Chat.map(cha=>(cha.username)).join(', ')}
                     </ListGroup.Item>
                 ))}
             </ListGroup>
