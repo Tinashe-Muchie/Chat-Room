@@ -167,7 +167,7 @@
 }
 
 .list-group-item.active {
-  background-color: #222629 !important;
+  background-color: #66fcf263 !important;
   border-top: thin solid #66FCF1 !important;
   border-bottom: thin solid #66FCF1 !important;
 }
