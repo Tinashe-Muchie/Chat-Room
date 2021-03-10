@@ -1,23 +1,17 @@
 import React from 'react';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import GlobalContext from './Components/Chat-Area/Context/GlobalContext'
 import './App.css';
-//import Signup from './Components/Login/Signup';
+//import Signup from './Components/Login/Signup'
 import ChatArea from './Components/Chat-Area/ChatArea'
 
 function App() {
 
   return (
     <div className="App">
-      <Router>
-        <>
+      <GlobalContext>
         <ChatArea />
-        <Switch>
-          <Route>
-
-          </Route>
-        </Switch>
-        </>
-      </Router> 
+        {/*<Signup />*/}
+      </GlobalContext>   
     </div>
   );
 }
