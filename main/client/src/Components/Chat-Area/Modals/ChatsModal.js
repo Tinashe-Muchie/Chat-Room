@@ -25,7 +25,7 @@ function ChatsModal({handleClose}) {
             })
         }
         
-    const Chats_s = selectedId.map((selected, index)=>{
+    const Chats_s = selectedId.map((selected)=>{
         const contact = Contacts.find(({id})=>{
             return selected === id
         })
