@@ -75,9 +75,10 @@ function GlobalContext({children}) {
         Contacts: state.contacts,
         createChats,
         selectChatIndex: setSelectedChatIndex,
-        selectedChatIndex: state.chats[selectedChatIndex],
+        selectedChatIndex: state.Chats[selectedChatIndex],
         chats: state.chats,
         createMessage,
+        Message: state.message,
     }
 
     return (
