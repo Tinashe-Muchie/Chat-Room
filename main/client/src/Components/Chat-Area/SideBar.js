@@ -5,7 +5,7 @@ import Contacts from './Tabs/Contacts'
 import ContactsModal from './Modals/ContactsModal'
 import ChatsModal from './Modals/ChatsModal'
 
-function SideBar() {
+function SideBar({id}) {
     const Chats_Key = 'chats';
     const Contacts_Key = 'contacts'
 
@@ -36,7 +36,7 @@ function SideBar() {
                     </Tab.Pane>
                 </Tab.Content>
                 <div className="id-tab mt-1 text-small text-muted">
-                    Your ID: <span></span>
+                    Your ID: <span>{id}</span>
                 </div>
                 <Button className="mt-1 mb-3" onClick={handleOpen} variant="outline-primary">
                     {
