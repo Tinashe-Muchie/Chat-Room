@@ -4,7 +4,7 @@ import SideBar from './SideBar'
 import MainBar from './MainBar'
 import { Context } from './Context/GlobalContext'
 
-function ChatArea() {
+function ChatArea({id}) {
     const {selectedChatIndex} = useContext(Context)
      
     return (
@@ -13,8 +13,8 @@ function ChatArea() {
                 <style>{'body {background-color: #222629}'}</style>
            </Helmet>
             <div className="d-flex container" style= {{height: '100vh' }}>
-                <SideBar />
-                {selectedChatIndex && <MainBar />}
+                <SideBar id={id} />
+                {selectedChatIndex && <MainBar id={id} />}
             </div>
         </div>
     )
